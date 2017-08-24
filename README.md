@@ -23,7 +23,7 @@ Make sure to `catkin_make` or `catkin build` the package and sourcing `setup.bas
 roslaunch lattice_navigation_demos p3dx-gazebo-empty-lattice-ppursuit
 ```
 
-You can set navigation goals through `rviz`.
+You can set navigation goals through `rviz`. Currently, both the planner and the path following algorithm have some limitations which are documented in their respective README files.
 
 ## Citing ##
 
