@@ -1,0 +1,19 @@
+<launch>
+  <arg name="name" default="$(env ROBOT_NAME)"/>
+  
+  <include file="$(find p2os_urdf)/launch/upload_pioneer3dx.xml"/>
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+	<param name="publish_frequency" type="double" value="30.0"/>
+	<param name="tf_prefix" type="string" value="$(arg name)"/>
+  </node>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="respawn_gazebo" value="true"/>
+  </include>
+  
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="spawn_pioneer" pkg="gazebo_ros" type="spawn_model"
+        args="-x 1.0 -y 1.0 -z 0.1 -urdf -param robot_description -model
+              robot_description" respawn="false" output="screen" />
+</launch>

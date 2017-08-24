@@ -1,0 +1,14 @@
+<launch>
+  <arg name="name" default="$(env ROBOT_NAME)"/>
+
+  <!-- Launch the robot in the simulated environment -->
+  <include file="$(find agv_navigation_demos)/launch/p3dx-gazebo-empty.launch">
+    <arg name="name" value="$(arg name)"/>
+  </include>
+  
+  <!-- Keyboard teleoperation -->
+  <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop">
+    <remap from="cmd_vel" to="$(arg name)/cmd_vel"/>
+  </node>
+  
+</launch>

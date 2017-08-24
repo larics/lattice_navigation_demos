@@ -1,0 +1,10 @@
+# Parameters for the Pioneer P3-DX robot
+
+lookahead_distance: 0.5
+max_linear_velocity: 0.5
+max_rotational_velocity: 0.5
+position_tolerance: 0.05
+map_frame_id: pioneer/map
+robot_frame_id: pioneer/base_link
+lookahead_frame_id: pioneer/lookahead
+

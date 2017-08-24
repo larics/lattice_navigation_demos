@@ -1,0 +1,39 @@
+<launch>
+  <arg name="name" default="$(env ROBOT_NAME)"/>
+  
+  <!-- Launch the robot in the simulated environment -->
+  <include file="$(find agv_navigation_demos)/launch/p3dx-gazebo-empty.launch">
+    <arg name="name" value="$(arg name)"/>
+  </include>
+
+  <!-- Get fake localization data as a transform -->
+  <node pkg="fake_localization" type="fake_localization" name="fakeloc">
+    <param name="odom_frame_id" value="$(arg name)/odom"/>
+    <param name="global_frame_id" value="$(arg name)/map"/>
+    <param name="base_frame_id" value="$(arg name)/base_link"/>
+  </node>
+  
+  <!-- Map server -->
+  <node pkg="map_server" type="map_server" name="map_server"
+        args="$(find lattice_planner)/maps/empty.yaml">
+    <param name="frame_id" value="$(arg name)/map"/>
+  </node>
+  
+  <!-- Lattice planner -->
+  <node pkg="lattice_planner" type="pathPlanner" name="planner"
+        args="$(find lattice_planner)/params/params_p3dx.mat"
+        output="screen">
+    <param name="map_frame_id" value="$(arg name)/map"/>
+    <param name="robot_frame_id" value="$(arg name)/base_link"/>
+  </node>
+
+  <!-- Pure pursuit path tracking -->
+  <include file="$(find agv_navigation_demos)/launch/pure_pursuit.launch">
+    <arg name="name" value="$(arg name)"/>
+  </include>
+  
+  <!-- rviz for visualization -->
+  <node pkg="rviz" type="rviz" name="rviz"
+        args="-d $(find agv_navigation_demos)/rviz/pioneer-control.rviz"/>
+  
+</launch>
