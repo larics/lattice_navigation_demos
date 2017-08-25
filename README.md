@@ -11,9 +11,14 @@ The package has been tested with ROS Kinetic on Ubuntu 16.04.
 In addition to `ros-kinetic-desktop-full`, the following packages must be available in your workspace:
 
 * [p2os](https://github.com/allenh1/p2os) - URDF model of the P3-DX
-* [lattice_planner](https://github.com/larics/agv_control_msgs) - the lattice path planner
+* [lattice_planner](https://github.com/larics/lattice_planner) - the lattice path planner
 * [agv_control_msgs](https://github.com/larics/agv_control_msgs) - path planner dependency
 * [pure_pursuit](https://github.com/larics/pure_pursuit) - path following algorithm
+
+The [lattice_planner](https://github.com/larics/lattice_planner) package also requires the [matio library](https://sourceforge.net/projects/matio/) for loading lattice parameters from `.mat` files:
+```
+sudo apt install libmatio-dev
+```
 
 Make sure to `catkin_make` or `catkin build` the package and sourcing `setup.bash` for your workspace before running the demo.
 
