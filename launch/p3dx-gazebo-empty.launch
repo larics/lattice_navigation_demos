@@ -1,5 +1,5 @@
 <launch>
-  <arg name="name" default="$(env ROBOT_NAME)"/>
+  <arg name="name" default="pioneer"/>
   
   <include file="$(find p2os_urdf)/launch/upload_pioneer3dx.xml"/>
 

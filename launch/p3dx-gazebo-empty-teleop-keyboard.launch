@@ -1,8 +1,8 @@
 <launch>
-  <arg name="name" default="$(env ROBOT_NAME)"/>
+  <arg name="name" default="pioneer"/>
 
   <!-- Launch the robot in the simulated environment -->
-  <include file="$(find agv_navigation_demos)/launch/p3dx-gazebo-empty.launch">
+  <include file="$(find lattice_navigation_demos)/launch/p3dx-gazebo-empty.launch">
     <arg name="name" value="$(arg name)"/>
   </include>
   

@@ -1,13 +1,13 @@
 <launch>
 
-  <arg name="name" default="$(env ROBOT_NAME)"/>
+  <arg name="name" default="pioneer"/>
   
   <!-- Pure pursuit path tracking -->
   <node pkg="pure_pursuit" type="pure_pursuit" name="controller">
     <param name="base_frame_id" value="$(arg name)/base_link"/>
     <param name="global_frame_id" value="$(arg name)/map"/>
     <param name="lookahead_frame_id" value="$(arg name)/lookahead"/>
-    <rosparam file="$(find agv_navigation_demos)/config/$(arg name).yaml" command="load"/>
+    <rosparam file="$(find lattice_navigation_demos)/config/$(arg name).yaml" command="load"/>
     <remap from="path_segment" to="plan"/>
     <remap from="odometry" to="$(arg name)/odom"/>
     <remap from="cmd_vel" to="$(arg name)/cmd_vel"/>
