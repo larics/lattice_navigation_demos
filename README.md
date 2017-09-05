@@ -19,6 +19,10 @@ The [lattice_planner](https://github.com/larics/lattice_planner) package also re
 ```
 sudo apt install libmatio-dev
 ```
+as well as the [ackermann_msgs ROS package](http://wiki.ros.org/ackermann_msgs) required for publishing Ackermann steering commands, which can be installed from the official ROS repo:
+```
+sudo apt install ros-kinetic-ackermann-msgs
+```
 
 Make sure to `catkin_make` or `catkin build` the package and sourcing `setup.bash` for your workspace before running the demo.
 
