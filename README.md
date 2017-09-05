@@ -19,7 +19,7 @@ The [lattice_planner](https://github.com/larics/lattice_planner) package also re
 ```
 sudo apt install libmatio-dev
 ```
-as well as the [ackermann_msgs ROS package](http://wiki.ros.org/ackermann_msgs) required for publishing Ackermann steering commands, which can be installed from the official ROS repo:
+The [pure_pursuit](https://github.com/larics/pure_pursuit) path following package requires the [ackermann_msgs ROS package](http://wiki.ros.org/ackermann_msgs) for publishing Ackermann steering commands, which can be installed from the official ROS repo:
 ```
 sudo apt install ros-kinetic-ackermann-msgs
 ```
